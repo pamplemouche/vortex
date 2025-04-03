@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Pamplemouche Vortex</title>
-<h1>Bienvenue sur Pamplemouche Vortex</h1>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récompenses Pamplemouche</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Bleu ciel */
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: #1E90FF; /* Bleu foncé */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #4682B4; /* Bleu clair */
+        }
+        #tokens {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Récompenses Pamplemouche</h1>
+    <form id="homework-form">
+        <input type="text" id="student-name" placeholder="Entrez votre nom" required>
+        <button type="submit">Soumettre le devoir</button>
+    </form>
+    <div id="tokens"></div>
 
+    <script>
+        document.getElementById('homework-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const studentName = document.getElementById('student-name').value;
+
+            // Simulate a backend response
+            const tokens = Math.floor(Math.random() * 100); // Random token count for demo
+
+            document.getElementById('tokens').innerText = `Tokens Pamplemouche : ${tokens}`;
+        });
+    </script>
 </body>
 </html>
