@@ -4,51 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pamplemouche Vortex</title>
-    <style>
-        body {
-            background-color: #87CEEB; /* Bleu ciel */
-            color: #333;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        button {
-            background-color: #1E90FF; /* Bleu foncé */
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #4682B4; /* Bleu clair */
-        }
-        #tokens {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Pamplemouche Vortex</h1>
-    <form id="homework-form">
-        <input type="text" id="student-name" placeholder="Entrez votre nom" required>
-        <button type="submit">Soumettre le devoir</button>
-    </form>
-    <div id="tokens"></div>
-
-    <script>
-        document.getElementById('homework-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const studentName = document.getElementById('student-name').value;
-
-            // Simulate a backend response with 10 tokens per submission
-            const tokens = 10; // Fixed 10 tokens for each homework submission
-
-            document.getElementById('tokens').innerText = `Tokens Pamplemouche : ${tokens}`;
-        });
-    </script>
+    <h1>Bienvenue sur Pamplemouche Vortex</h1>
+    <h2>Le site pour se motiver aux devoirs</h2>
 </body>
 </html>
