@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Récompenses Pamplemouche</title>
+    <title>Pampelmouche Vortex</title>
     <style>
         body {
             background-color: #87CEEB; /* Bleu ciel */
@@ -32,10 +32,10 @@
     </style>
 </head>
 <body>
-    <h1>Récompenses Pamplemouche</h1>
+    <h1>Pamplemouche Vortex</h1>
     <form id="homework-form">
-        <input type="text" id="student-name" placeholder="Entrez votre nom" required>
-        <button type="submit">Soumettre le devoir</button>
+        <input type="image" id="student-name" placeholder="Entrez votre nom" required>
+        <button type="submit">Rendre</button>
     </form>
     <div id="tokens"></div>
 
@@ -45,7 +45,7 @@
             const studentName = document.getElementById('student-name').value;
 
             // Simulate a backend response
-            const tokens = Math.floor(Math.random() * 100); // Random token count for demo
+            const tokens = Math.floor(10 * 100); // Random token count for demo
 
             document.getElementById('tokens').innerText = `Tokens Pamplemouche : ${tokens}`;
         });
