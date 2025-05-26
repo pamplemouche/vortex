@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pamplemouche Vortex</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-title">Pamplemouche Vortex</div>
+      <div class="nav-buttons">
+        <button class="nav-button" id="login-button"><i class="fas fa-sign-in-alt"></i>connexion</button>
+        <button class="nav-button" id="register-button"><i class="fas fa-user-plus"></i>Inscription</button>
+      </div>
+    </nav>
+    <style>
+      .nav {
+        background-color: #3498db;
+        color: #fff;
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 10px 10px 00;
+      }
+      .nav-title{
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      .nav-buttons{
+        display: flex;
+        align-items: center;
+      }
+      .nav-button{
+        background-color: #2ecc21;
+        color: #fff;
+        border: none;
+        padding: 0.5em 1em;
+        margin-left: 1em;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: background-color 0,2s ease;
+      }
+      .nav-button: hover {
+        background-color: #29b765;
+      }
+      .nav-button i{
+        margin-right: 0.5em;
+      }
+    </style>
+  </body>
+</html>
