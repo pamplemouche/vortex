@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <script>
+      fetch('',{
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          function: 'addUserStudent',
+          username: 'Noam',
+          password: 'test',
+          email: 'pamplemouchetech@gmail.com',
+          age: '13'
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error))
+    </script>
+  </body>
+</html>
