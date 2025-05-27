@@ -24,7 +24,7 @@
 
     const nom = document.getElementById('nom').value
 // Ajouter un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
   method: 'POST',
   body: new URLSearchParams({
     action: 'addUserStudent',
@@ -37,7 +37,7 @@ fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cv
 .then(res => res.text())
 .then(alert);
 // Modifier un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
   method: 'POST',
   body: new URLSearchParams({
     action: 'updateUserStudent',
@@ -50,7 +50,7 @@ fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cv
 .then(alert);
 
 // Supprimer un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
   method: 'POST',
   body: new URLSearchParams({
     action: 'deleteUserStudent',
@@ -61,7 +61,7 @@ fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cv
 .then(alert);
 
 // Lister tous les utilisateurs
-fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', { method: 'GET' })
+fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', { method: 'GET' })
   .then(res => res.json())
   .then(console.log);
 </script>
