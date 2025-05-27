@@ -1,69 +1,185 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-  </head>
-  <body><!-- FORMULAIRE HTML -->
-<form id="userStudentForm">
-  <label for="username">Nom D'utilisateur :</label>
-  <input type="text" id="nom" name="nom" required>
-  <label for="password">Mot De Passe :</label>
-  <input type="password" id="password" name="password" required>
-  <label for="email">Email :</label>
-  <input type="email" id="email" name="email" required>
-  <label for="age">Age :</label>
-  <input type="number" id="age" name="age" required>
-  <button type="submit">Envoyer</button>
-</form>
-<div id="response"></div>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pamplemousse Vortex - Inscription</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Police Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Styles personnalisés pour un meilleur rendu */
+        .container {
+            max-width: 800px;
+        }
+        .form-input {
+            @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline;
+        }
+        .btn-primary {
+            @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline;
+        }
+        .btn-secondary {
+            @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline;
+        }
+        .message-box {
+            @apply fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out opacity-0;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .message-box.error {
+            @apply bg-red-500;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center p-4">
+    <div class="container bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Rejoignez le Vortex !</h1>
 
-<script>
-// Ajouter un utilisateur
-  document.getElementById('userStudentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+        <form id="dataForm" class="mb-8">
+            <div class="mb-4">
+                <label for="nom" class="block text-gray-700 text-sm font-bold mb-2">Nom :</label>
+                <input type="text" id="nom" name="nom" class="form-input" placeholder="Votre nom" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="Votre email" required>
+            </div>
+            <div class="mb-6">
+                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message :</label>
+                <textarea id="message" name="message" class="form-input h-24 resize-none" placeholder="Laissez un message (optionnel)"></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="btn-primary">Envoyer les données</button>
+                <button type="button" id="loadDataBtn" class="btn-secondary">Charger les données existantes</button>
+            </div>
+        </form>
 
-    const nom = document.getElementById('nom').value
-// Ajouter un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
-  method: 'POST',
-  body: new URLSearchParams({
-    action: 'addUserStudent',
-    nom: nom,
-    password: 'secret',
-    email: 'jean@ex.com',
-    age: 23,
-  })
-})
-.then(res => res.text())
-.then(alert);
-// Modifier un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
-  method: 'POST',
-  body: new URLSearchParams({
-    action: 'updateUserStudent',
-    email: 'jean@ex.com',
-    nom: 'Jean Nouveau',
-    age: 25
-  })
-})
-.then(res => res.text())
-.then(alert);
+        <div id="dataDisplay" class="bg-gray-100 p-6 rounded-lg shadow-inner hidden">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Données enregistrées :</h2>
+            <div id="dataList" class="space-y-4">
+                <p class="text-gray-500 text-center">Aucune donnée chargée pour le moment.</p>
+            </div>
+        </div>
+    </div>
 
-// Supprimer un utilisateur
-fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', {
-  method: 'POST',
-  body: new URLSearchParams({
-    action: 'deleteUserStudent',
-    email: 'jean@ex.com'
-  })
-})
-.then(res => res.text())
-.then(alert);
+    <div id="messageBox" class="message-box">
+        <span id="messageText"></span>
+    </div>
 
-// Lister tous les utilisateurs
-fetch('https://script.google.com/macros/s/AKfycbxGiygFEAV1IxjTTxthKK2IKG1oE58JzPlyYd4JMOW1iRt5et74iAZiX4IOFVoS722zjg/exec', { method: 'GET' })
-  .then(res => res.json())
-  .then(console.log);
-</script>
-  </body>
+    <script>
+        // REMPLACEZ CETTE URL PAR L'URL DE VOTRE APPLICATION WEB GOOGLE APPS SCRIPT DÉPLOYÉE
+        const APPS_SCRIPT_URL = 'YOUR_DEPLOYED_APPS_SCRIPT_URL';
+
+        const dataForm = document.getElementById('dataForm');
+        const loadDataBtn = document.getElementById('loadDataBtn');
+        const dataDisplay = document.getElementById('dataDisplay');
+        const dataList = document.getElementById('dataList');
+        const messageBox = document.getElementById('messageBox');
+        const messageText = document.getElementById('messageText');
+
+        /**
+         * Affiche une boîte de message avec le texte donné et le type (succès/erreur).
+         * @param {string} message Le texte à afficher.
+         * @param {string} type Le type de message ('success' ou 'error').
+         */
+        function showMessage(message, type = 'success') {
+            messageText.textContent = message;
+            messageBox.classList.remove('opacity-0', 'error');
+            messageBox.classList.add('show');
+            if (type === 'error') {
+                messageBox.classList.add('error');
+            } else {
+                messageBox.classList.remove('error');
+            }
+
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+                messageBox.classList.add('opacity-0');
+            }, 3000); // Le message disparaît après 3 secondes
+        }
+
+        /**
+         * Gère la soumission du formulaire pour envoyer des données à Google Sheet.
+         * @param {Event} event L'événement de soumission du formulaire.
+         */
+        dataForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Empêcher le rechargement de la page
+
+            const formData = new FormData(dataForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Envoyer les données au script Apps Script via une requête POST
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors', // Important pour les requêtes cross-origin
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showMessage('Données envoyées avec succès!', 'success');
+                    dataForm.reset(); // Réinitialiser le formulaire après succès
+                    loadData(); // Recharger les données pour afficher la nouvelle entrée
+                } else {
+                    showMessage(`Erreur lors de l'envoi : ${result.message}`, 'error');
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi des données:', error);
+                showMessage('Erreur de connexion ou du serveur.', 'error');
+            }
+        });
+
+        /**
+         * Charge les données existantes depuis Google Sheet et les affiche.
+         */
+        async function loadData() {
+            dataDisplay.classList.remove('hidden'); // Afficher la zone d'affichage
+
+            try {
+                // Récupérer les données du script Apps Script via une requête GET
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'GET',
+                    mode: 'cors',
+                });
+
+                const data = await response.json();
+
+                dataList.innerHTML = ''; // Effacer les données précédentes
+
+                if (data.length === 0) {
+                    dataList.innerHTML = '<p class="text-gray-500 text-center">Aucune donnée enregistrée pour le moment.</p>';
+                } else {
+                    data.forEach(row => {
+                        const div = document.createElement('div');
+                        div.className = 'bg-white p-4 rounded-lg shadow';
+                        div.innerHTML = `
+                            <p class="font-semibold text-gray-900">${row.Nom} (${row.Email})</p>
+                            <p class="text-gray-700 text-sm">${row.Message || 'Pas de message'}</p>
+                            <p class="text-gray-500 text-xs mt-1">Enregistré le: ${new Date(row.Timestamp).toLocaleString()}</p>
+                        `;
+                        dataList.appendChild(div);
+                    });
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+                showMessage('Erreur lors du chargement des données.', 'error');
+                dataList.innerHTML = '<p class="text-red-500 text-center">Impossible de charger les données.</p>';
+            }
+        }
+
+        // Écouteur d'événement pour le bouton "Charger les données"
+        loadDataBtn.addEventListener('click', loadData);
+
+        // Charger les données au chargement initial de la page (facultatif)
+        // window.onload = loadData;
+    </script>
+</body>
 </html>
