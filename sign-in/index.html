@@ -18,27 +18,48 @@
 <div id="response"></div>
 
 <script>
-document.getElementById('userStudentForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-
-  // Ajoute le nom de la fonction à appeler dans le Apps Script
-  data.append('action', 'addUserStudent');
-
-  fetch('https://script.google.com/macros/s/AKfycbwrlu1MDQSTcWeXjpzNFmRWvU-L78oGmpn3aUMZIjn0PT8fLIO1unW_tHtqpqKBmvRd/exec', {
-    method: 'POST',
-    body: data
+// Ajouter un utilisateur
+fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+  method: 'POST',
+  body: new URLSearchParams({
+    action: 'addUserStudent',
+    nom: 'Jean',
+    password: 'secret',
+    email: 'jean@ex.com',
+    age: 23,
   })
-  .then(response => response.text())
-  .then(text => {
-    document.getElementById('response').innerText = text;
-    form.reset();
+})
+.then(res => res.text())
+.then(alert);
+
+// Modifier un utilisateur
+fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+  method: 'POST',
+  body: new URLSearchParams({
+    action: 'updateUserStudent',
+    email: 'jean@ex.com',
+    nom: 'Jean Nouveau',
+    age: 25
   })
-  .catch(error => {
-    document.getElementById('response').innerText = "Erreur : " + error;
-  });
-});
+})
+.then(res => res.text())
+.then(alert);
+
+// Supprimer un utilisateur
+fetch('TON_URL_SCRIPT', {
+  method: 'POST',
+  body: new URLSearchParams({
+    action: 'deleteUserStudent',
+    email: 'jean@ex.com'
+  })
+})
+.then(res => res.text())
+.then(alert);
+
+// Lister tous les utilisateurs
+fetch('TON_URL_SCRIPT', { method: 'GET' })
+  .then(res => res.json())
+  .then(console.log);
 </script>
   </body>
 </html>
