@@ -19,33 +19,19 @@
 
 <script>
 // Ajouter un utilisateur
-// Ajouter un utilisateur via le formulaire
-document.getElementById('userStudentForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // Empêche le rechargement de la page
-
-  const form = e.target;
-  const formData = new URLSearchParams({
+// Ajouter un utilisateur
+fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
+  method: 'POST',
+  body: new URLSearchParams({
     action: 'addUserStudent',
-    nom: form.nom.value,
-    password: form.password.value,
-    email: form.email.value,
-    age: form.age.value
-  });
-
-  fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
-    method: 'POST',
-    body: formData
+    nom: 'Jean',
+    password: 'secret',
+    email: 'jean@ex.com',
+    age: 23,
   })
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('response').textContent = data; // Affiche la réponse dans la div
-    form.reset(); // Réinitialise le formulaire
-  })
-  .catch(err => {
-    document.getElementById('response').textContent = 'Erreur : ' + err;
-  });
-});
-
+})
+.then(res => res.text())
+.then(alert);
 // Modifier un utilisateur
 fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
   method: 'POST',
