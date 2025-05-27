@@ -19,6 +19,10 @@
 
 <script>
 // Ajouter un utilisateur
+  document.getElementById('userStudentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nom = document.getElementById('nom').value
 // Ajouter un utilisateur
 fetch('https://script.google.com/macros/s/AKfycbyLv2W1E3VlRUAIgK9FUoa5guMTJKL8cvETJKIJ8ubG5VnSno-8QfyLGWxd1v_zCsX4bg/exec', {
   method: 'POST',
